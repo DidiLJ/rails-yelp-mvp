@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'restaurants/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -6,5 +7,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "restaurants#index"
+  resources :restaurants, except: [:update, :edit, :destroy] do
+    resources :reviews, except: [:update, :edit, :destroy]
+  end
 end

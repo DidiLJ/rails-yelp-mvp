@@ -1,0 +1,9 @@
+<%= simple_form_for(restaurant, wrapper_html: { class: "form-group"}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input_field :category, collection: Restaurant::CATEGORY, prompt: "Select Category"%>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to list", root_path, class: "btn btn-outline-secondary" %>
